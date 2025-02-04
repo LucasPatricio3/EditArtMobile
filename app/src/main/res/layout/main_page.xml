@@ -1,0 +1,93 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    android:gravity="center"
+    android:fitsSystemWindows="true"
+    tools:context=".MainPage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:orientation="vertical">
+
+        <!-- Top controls layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="8dp"
+            android:layout_margin="16dp">
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="16dp"
+                android:layout_height="24dp"
+                android:background="@drawable/caret_left"
+                android:layout_marginHorizontal="16dp"/>
+
+            <EditText
+                android:id="@+id/user_name_input"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_border"
+                android:hint="@string/book_search_bar_hint"
+                android:drawableEnd="@drawable/magnifying_glass_small"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="@color/dark_beige"
+                android:textColorHint="@color/dark_beige"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:id="@+id/log_out_button"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/exit_icon"
+                android:layout_marginHorizontal="16dp"/>
+
+        </LinearLayout>
+
+        <!-- Book display layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="top"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="@string/as_nossas_publicacoes"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"/>
+
+        </LinearLayout>
+
+        <!-- Bottom navigation layout -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/login_background"
+            app:itemTextColor="@color/beige"
+            app:menu="@menu/bottom_nav_menu"/>
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

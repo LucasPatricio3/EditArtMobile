@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="18dp">
+        android:padding="48dp">
 
         <ImageView
             android:layout_width="160dp"
@@ -24,25 +24,24 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:hint="@string/login"
+            android:layout_marginTop="32dp"
+            android:hint="@string/entrar"
             android:textColor="@color/white"
             android:textColorHint="@color/beige"
             android:textAlignment="center"
-            android:textSize="32sp"
-            android:padding="18dp"
+            android:textSize="24sp"
             android:id="@+id/login_txt"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:hint="@string/email"
             android:textColor="@color/white"
-            android:textColorHint="@color/beige"
-            android:textSize="20sp"
+            android:textColorHint="@color/dark_beige"
+            android:textSize="16sp"
             android:background="@drawable/square_border"
-            android:padding="18dp"
+            android:padding="12dp"
             android:inputType="textEmailAddress"
             android:id="@+id/user_email_input"/>
 
@@ -52,12 +51,23 @@
             android:layout_marginTop="16dp"
             android:hint="@string/password"
             android:textColor="@color/beige"
-            android:textColorHint="@color/beige"
-            android:textSize="20sp"
+            android:textColorHint="@color/dark_beige"
+            android:textSize="16sp"
             android:background="@drawable/square_border"
-            android:padding="18dp"
+            android:padding="12dp"
             android:inputType="textPassword"
             android:id="@+id/password_input"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="end"
+            android:text="@string/esqueceu_se_da_password"
+            android:textColor="@color/beige"
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/forgot_password"/>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
@@ -65,7 +75,7 @@
             android:text="@string/entrar"
             android:backgroundTint="@color/dark_grey"
             android:textColor="@color/beige"
-            android:padding="18dp"
+            android:padding="12dp"
             android:layout_marginTop="32dp"
             android:layout_marginHorizontal="70dp"
             android:textSize="20sp"
@@ -73,6 +83,16 @@
             app:strokeWidth="1dp"
             app:strokeColor="@color/beige"
             app:cornerRadius="0dp"/>
+
+        <TextView
+            android:id="@+id/do_register_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/registe_se"
+            android:textColor="@color/beige" />
 
 
 

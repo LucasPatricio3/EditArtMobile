@@ -1,12 +1,20 @@
 package com.editart.mobile;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -27,6 +35,8 @@ public class Login extends AppCompatActivity {
     EditText userEmail;
     EditText userPassword;
     Button loginBtn;
+    TextView forgotPassword;
+    SpannableString span = new SpannableString("Não tem conta? Registe-se!");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +52,7 @@ public class Login extends AppCompatActivity {
         userEmail = findViewById(R.id.user_email_input);
         userPassword = findViewById(R.id.password_input);
         loginBtn = findViewById(R.id.login_btn);
+        TextView doRegisterText = findViewById(R.id.do_register_text);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +63,17 @@ public class Login extends AppCompatActivity {
                 performLogin(email, password);
             }
         });
+
+        span.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+                Log.i("Click", "Clicked On Register Reirect");
+                Intent intent = new Intent(widget.getContext(), Register.class);
+                widget.getContext().startActivity(intent);
+            }
+        }, 0, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        doRegisterText.setText(span);
+        doRegisterText.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     private void performLogin(String email, String password) {
@@ -60,7 +82,7 @@ public class Login extends AppCompatActivity {
             return;
         }
 
-        Retrofit retrofit = RetrofitClient.getClient("http://10.0.2.2:8000/");
+        Retrofit retrofit = RetrofitClient.getClient(APIInterface.API_URL);
         APIInterface apiInterface = retrofit.create(APIInterface.class);
 
         LoginRequest loginRequest = new LoginRequest(email, password);
@@ -82,6 +104,8 @@ public class Login extends AppCompatActivity {
 
                         Log.d("Login Success", "Token: " + token);
                         Log.d("User Info", "Name: " + name + ", Role: " + role);
+                        Intent intent = new Intent(Login.this, MainPage.class);
+                        startActivity(intent);
                     } else {
                         Log.e("Login Error", "Data is null");
                     }

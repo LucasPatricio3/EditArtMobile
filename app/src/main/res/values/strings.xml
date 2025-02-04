@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">EditArtMobile</string>
     <string name="utilizador">Utilizador</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="email">Email*</string>
+    <string name="password">Password*</string>
     <string name="entrar">ENTRAR</string>
     <string name="login">LOGIN</string>
     <!-- Strings used for fragments for navigation -->
@@ -48,4 +48,13 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="title_activity_register">Register</string>
+    <string name="esqueceu_se_da_password">Esqueceu-se da password?</string>
+    <string name="registe_se">Não tem comta? Registe-se!</string>
+    <string name="criar_conta">CRIAR CONTA</string>
+    <string name="nome">Nome*</string>
+    <string name="faca_login">Já tem conta? Faça Login!</string>
+    <string name="criar">CRIAR</string>
+    <string name="confirmar_password">Confirmar password*</string>
+    <string name="book_search_bar_hint">Pesquisa</string>
+    <string name="as_nossas_publicacoes">AS NOSSAS PUBLICAÇÕES</string>
 </resources>
