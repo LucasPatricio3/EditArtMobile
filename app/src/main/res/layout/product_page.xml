@@ -1,0 +1,217 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    android:gravity="center"
+    android:fitsSystemWindows="true"
+    tools:context=".ProductPage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:orientation="vertical">
+
+        <!-- Top controls layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="8dp"
+            android:layout_margin="16dp">
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="16dp"
+                android:layout_height="24dp"
+                android:background="@drawable/caret_left"
+                android:layout_marginHorizontal="16dp"/>
+
+            <EditText
+                android:id="@+id/user_name_input"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_border"
+                android:hint="@string/book_search_bar_hint"
+                android:drawableEnd="@drawable/magnifying_glass_small"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="@color/dark_beige"
+                android:textColorHint="@color/dark_beige"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:id="@+id/log_out_button"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/exit_icon"
+                android:layout_marginHorizontal="16dp"/>
+
+        </LinearLayout>
+
+        <!-- Book display layout -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/product_background"
+                android:id="@+id/activity_product_page">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/book_cover"
+                        android:layout_width="150dp"
+                        android:layout_height="220dp"
+                        android:src="@drawable/book_display"
+                        android:contentDescription="Book Cover" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:id="@+id/book_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="O Mestre e Margarida"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:paddingTop="8dp" />
+
+                        <TextView
+                            android:id="@+id/book_author"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mikhail Bulgákov"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="italic"
+                            android:paddingBottom="8dp" />
+
+                        <TextView
+                            android:id="@+id/section_genre"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="GÊNERO"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/book_genre"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:paddingTop="4dp"
+                            android:text="Romance, Fantasia"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <RatingBar
+                        android:id="@+id/book_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="16dp"
+                        android:progressTint="@color/beige"
+                        android:progressBackgroundTint="@color/dark_grey"
+                        android:numStars="5"
+                        android:rating="4"
+                        android:isIndicator="true"
+                        android:stepSize="0.5" />
+
+                    <TextView
+                        android:id="@+id/book_rating_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5.0"
+                        android:paddingLeft="8dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/book_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="€19.99"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingTop="8dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="8dp">
+
+                    <ImageView
+                        android:id="@+id/favorite_icon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:tint="@color/dark_grey"
+                        android:src="@drawable/heart_solid"
+                        android:contentDescription="Favorite" />
+
+                    <ImageView
+                        android:id="@+id/cart_icon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/cart_shopping_solid"
+                        android:contentDescription="Cart"
+                        android:layout_marginHorizontal="8dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/section_about"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SOBRE LIVRO"
+                    android:textStyle="bold"
+                    android:paddingTop="16dp" />
+
+                <TextView
+                    android:id="@+id/book_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aliquam fringilla aliquam nunc sit amet cursus..."
+                    android:textSize="14sp"
+                    android:paddingTop="4dp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Bottom navigation layout -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/login_background"
+            android:elevation="0dp"
+            android:outlineProvider="none"
+            app:itemBackground="@drawable/nav_color_state"
+            app:itemIconTint="@color/black"
+            app:itemTextColor="@color/beige"
+            app:menu="@menu/bottom_nav_menu" />
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,5 +1,7 @@
 package com.editart.mobile;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,12 +36,19 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
         Book book = books.get(position);
         holder.bookTitle.setText(book.getTitle());
-        holder.bookAuthor.setText(book.getAuthor());
+        holder.bookAuthor.setText(book.getAuthors());
         holder.bookPrice.setText(String.format("€%.2f", book.getPrice()));
         holder.bookRating.setRating(book.getRating());
 
         // Load image (if using Glide or Picasso)
         // Glide.with(holder.itemView.getContext()).load(book.getCoverPicture()).into(holder.bookCover);
+
+        holder.itemView.setOnClickListener(v -> {
+            Context context = v.getContext();
+            Intent intent = new Intent(context, ProductPage.class);
+            intent.putExtra("BOOK_ID", book.getId()); // Pass book ID
+            context.startActivity(intent);
+        });
     }
 
     @Override

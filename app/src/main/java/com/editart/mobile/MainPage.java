@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.editart.mobile.models.Book;
-import com.editart.mobile.models.BookRepository;
 import com.editart.mobile.models.BookResponse;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

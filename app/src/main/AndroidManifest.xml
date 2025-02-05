@@ -20,6 +20,10 @@
             android:exported="false"
             android:windowSoftInputMode="adjustPan"/>
         <activity
+            android:name=".ProductPage"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
             android:name=".Register"
             android:exported="false"
             android:label="@string/title_activity_register"
@@ -29,7 +33,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

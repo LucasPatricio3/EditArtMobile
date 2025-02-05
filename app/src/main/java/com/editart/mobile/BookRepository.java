@@ -1,12 +1,12 @@
-package com.editart.mobile.models;
+package com.editart.mobile;
 
 import android.util.Log;
-
 import com.editart.mobile.api.APIInterface;
+import com.editart.mobile.models.Book;
+import com.editart.mobile.models.BookResponse;
 import com.editart.mobile.retrofit.RetrofitClient;
-
+import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -14,17 +14,15 @@ import retrofit2.Response;
 public class BookRepository {
 
     private APIInterface apiInterface;
-
     private static BookRepository Instance;
+    private List<Book> bookList = new ArrayList<>(); // Local cache
 
     public BookRepository() {
         apiInterface = RetrofitClient.getClient(APIInterface.API_URL).create(APIInterface.class);
     }
 
-    public static BookRepository GetInstance()
-    {
-        if (Instance == null)
-        {
+    public static BookRepository GetInstance() {
+        if (Instance == null) {
             Instance = new BookRepository();
         }
         return Instance;
@@ -44,25 +42,26 @@ public class BookRepository {
             @Override
             public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    BookResponse bookResponse = response.body();
-                    if (bookResponse.isSuccess()) {
-                        Log.i("API", "Books fetched successfully: " + bookResponse.getData().size() + " books found.");
-                        callback.onBooksFetched(bookResponse.getData());
-                    } else {
-                        Log.e("API", "API returned failure: " + response.message());
-                        callback.onFailure("API returned failure");
-                    }
+                    bookList = response.body().getData(); // Save to local cache
+                    callback.onBooksFetched(bookList);
                 } else {
-                    Log.e("API", "Error: " + response.message());
-                    callback.onFailure("Error: " + response.message());
+                    callback.onFailure("API returned failure");
                 }
             }
 
             @Override
             public void onFailure(Call<BookResponse> call, Throwable t) {
-                Log.e("API", "Error fetching books: " + t.getMessage());
                 callback.onFailure(t.getMessage());
             }
         });
+    }
+
+    public Book getBookById(int id) {
+        for (Book book : bookList) {
+            if (book.getId() == id) {
+                return book; // Return from cache
+            }
+        }
+        return null; // Not found
     }
 }

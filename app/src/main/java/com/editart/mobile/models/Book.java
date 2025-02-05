@@ -1,6 +1,8 @@
 package com.editart.mobile.models;
 
-public class Book {
+import java.util.Objects;
+
+public class  Book {
     private int id;
     private String title;
     private String type;
@@ -13,9 +15,13 @@ public class Book {
     private String coverPicture; // This might be null
     private double price;
     private String description;
-    private String author; // New field for author
+    private String authors;
+    private String genres;
     private float rating; // New field for rating
 
+    public int getId() {
+        return id;
+    }
     public String getTitle() {
         return title;
     }
@@ -60,8 +66,12 @@ public class Book {
         return description;
     }
 
-    public String getAuthor() {
-        return author; // Getter for author
+    public String getAuthors() {
+        return !Objects.equals(authors, "") ? authors : "Autor desconhecido";
+    }
+
+    public String getGenres() {
+        return !Objects.equals(genres, "") ? genres : "Gênero desconhecido"; // Getter for author
     }
 
     public float getRating() {

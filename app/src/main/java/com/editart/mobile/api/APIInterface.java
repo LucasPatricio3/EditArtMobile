@@ -1,5 +1,6 @@
 package com.editart.mobile.api;
 
+import com.editart.mobile.models.Book;
 import com.editart.mobile.models.BookResponse;
 import com.editart.mobile.models.LoginRequest;
 import com.editart.mobile.models.LoginResponse;
@@ -9,6 +10,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 import java.util.List;
 

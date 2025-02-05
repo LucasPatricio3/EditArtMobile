@@ -87,6 +87,10 @@
             android:layout_gravity="bottom"
             android:background="@drawable/login_background"
             app:itemTextColor="@color/beige"
+            app:itemBackground="@drawable/nav_color_state"
+            app:itemIconTint="@color/black"
+            android:elevation="0dp"
+            android:outlineProvider="none"
             app:menu="@menu/bottom_nav_menu"/>
 
     </LinearLayout>

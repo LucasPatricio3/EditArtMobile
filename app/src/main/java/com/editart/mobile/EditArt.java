@@ -5,7 +5,6 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.editart.mobile.models.Book;
-import com.editart.mobile.models.BookRepository;
 import com.editart.mobile.models.BookResponse;
 import java.util.List;
 import retrofit2.Call;
