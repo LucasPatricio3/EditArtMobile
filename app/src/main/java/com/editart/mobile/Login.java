@@ -104,6 +104,7 @@ public class Login extends AppCompatActivity {
 
                         Log.d("Login Success", "Token: " + token);
                         Log.d("User Info", "Name: " + name + ", Role: " + role);
+                        LoginResponse.setLastLogin(loginResponse.getData());
                         Intent intent = new Intent(Login.this, MainPage.class);
                         startActivity(intent);
                     } else {

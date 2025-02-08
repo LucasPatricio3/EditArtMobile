@@ -1,0 +1,266 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    android:gravity="center"
+    android:fitsSystemWindows="true"
+    tools:context=".ProfilePage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:orientation="vertical">
+
+        <!-- Top controls layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="8dp"
+            android:layout_margin="16dp">
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="16dp"
+                android:layout_height="24dp"
+                android:background="@drawable/caret_left"
+                android:layout_marginHorizontal="16dp"/>
+
+            <EditText
+                android:id="@+id/user_name_input"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_border"
+                android:drawableEnd="@drawable/magnifying_glass_small"
+                android:hint="@string/book_search_bar_hint"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="@color/dark_beige"
+                android:textColorHint="@color/dark_beige"
+                android:textSize="16sp"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/log_out_button"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/exit_icon"
+                android:layout_marginHorizontal="16dp"/>
+
+        </LinearLayout>
+
+        <!-- Book display layout -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:background="@drawable/product_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="32dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingBottom="48dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="288dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/icon_account_circle"
+                        tools:srcCompat="@drawable/icon_account_circle" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/welcome_label"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Bem-vindo(a)"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/client_name_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Name"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/email_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:text="EMAIL"
+                    android:textColor="@color/beige"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/email_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="blah@email.com" />
+
+                <TextView
+                    android:id="@+id/nif_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:text="NIF"
+                    android:textColor="@color/beige"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/nif_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="000000000" />
+
+                <TextView
+                    android:id="@+id/phone_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:text="PHONE NUMBER"
+                    android:textColor="@color/beige"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/phone_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="000000000" />
+
+                <TextView
+                    android:id="@+id/address_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:text="ADDRESS"
+                    android:textColor="@color/beige"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/address_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="Blah Street" />
+
+                <TextView
+                    android:id="@+id/postal_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:text="POSTAL CODE"
+                    android:textColor="@color/beige"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/postal_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="Blah Street" />
+
+                <TextView
+                    android:id="@+id/locality_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:text="LOCALITY"
+                    android:textColor="@color/beige"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/locality_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="Blah Street" />
+
+                <TextView
+                    android:id="@+id/created_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:text="CREATED AT"
+                    android:textColor="@color/beige"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/created_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="Date" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Bottom navigation layout -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/login_background"
+            android:elevation="0dp"
+            android:outlineProvider="none"
+            app:itemBackground="@drawable/nav_color_state"
+            app:itemIconTint="@color/beige"
+            app:itemTextColor="@color/beige"
+            app:menu="@menu/bottom_nav_menu" />
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

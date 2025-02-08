@@ -56,13 +56,15 @@
         <!-- Book display layout -->
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/product_background">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="16dp"
-                android:background="@drawable/product_background"
                 android:id="@+id/activity_product_page">
 
                 <LinearLayout
@@ -119,7 +121,41 @@
                             android:paddingTop="4dp"
                             android:text="Romance, Fantasia"
                             android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/book_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="€19.99"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:paddingTop="8dp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="8dp">
+
+                            <ImageView
+                                android:id="@+id/favorite_icon"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                app:tint="@color/dark_grey"
+                                android:src="@drawable/heart_solid"
+                                android:contentDescription="Favorite" />
+
+                            <ImageView
+                                android:id="@+id/cart_icon"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/cart_shopping_solid"
+                                android:contentDescription="Cart"
+                                android:layout_marginHorizontal="8dp"/>
+                        </LinearLayout>
+
                     </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -146,38 +182,6 @@
                         android:layout_height="wrap_content"
                         android:text="5.0"
                         android:paddingLeft="8dp" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/book_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="€19.99"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:paddingTop="8dp" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="8dp">
-
-                    <ImageView
-                        android:id="@+id/favorite_icon"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        app:tint="@color/dark_grey"
-                        android:src="@drawable/heart_solid"
-                        android:contentDescription="Favorite" />
-
-                    <ImageView
-                        android:id="@+id/cart_icon"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:src="@drawable/cart_shopping_solid"
-                        android:contentDescription="Cart"
-                        android:layout_marginHorizontal="8dp"/>
                 </LinearLayout>
 
                 <TextView
@@ -209,7 +213,7 @@
             android:elevation="0dp"
             android:outlineProvider="none"
             app:itemBackground="@drawable/nav_color_state"
-            app:itemIconTint="@color/black"
+            app:itemIconTint="@color/beige"
             app:itemTextColor="@color/beige"
             app:menu="@menu/bottom_nav_menu" />
 

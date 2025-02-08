@@ -64,4 +64,8 @@ public class BookRepository {
         }
         return null; // Not found
     }
+
+    public List<Book> getBooks(){
+        return bookList;
+    }
 }

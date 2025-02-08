@@ -8,7 +8,7 @@
                 android:centerColor="@color/beige"
                 android:endColor="@color/white"
                 android:type="linear"
-                android:centerY="0.25"/>
+                android:centerY="0.1"/>
         </shape>
     </item>
 </layer-list>

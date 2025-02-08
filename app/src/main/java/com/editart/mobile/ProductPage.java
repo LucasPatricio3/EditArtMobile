@@ -1,5 +1,6 @@
 package com.editart.mobile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -9,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.editart.mobile.models.Book;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProductPage extends AppCompatActivity {
     private TextView bookTitle, bookAuthor, bookGenre, bookPrice, bookDescription, bookRatingValue;
@@ -36,6 +38,23 @@ public class ProductPage extends AppCompatActivity {
         if (bookId != -1) {
             loadBookDetails(bookId);
         }
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.nav_products);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.nav_products) {
+                startActivity(new Intent(ProductPage.this, MainPage.class));
+            } else if (itemId == R.id.nav_wishlist) {
+                startActivity(new Intent(ProductPage.this, MainPage.class));
+            } else if (itemId == R.id.nav_cart) {
+                startActivity(new Intent(ProductPage.this, MainPage.class));
+            } else if (itemId == R.id.nav_profile) {
+                startActivity(new Intent(ProductPage.this, ProfilePage.class));
+            }
+            return false;
+        });
     }
 
     private void loadBookDetails(int bookId) {

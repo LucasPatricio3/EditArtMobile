@@ -1,5 +1,6 @@
 package com.editart.mobile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -18,7 +19,6 @@ import retrofit2.Call;
 public class MainPage extends AppCompatActivity {
     private RecyclerView recyclerView;
     private BookAdapter bookAdapter;
-
     BottomNavigationView bottomNav;
 
     @Override
@@ -27,7 +27,19 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.main_page);
 
         bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnItemReselectedListener(item -> {});
+        bottomNav.setSelectedItemId(R.id.nav_products);
+        bottomNav.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.nav_wishlist) {
+                startActivity(new Intent(MainPage.this, MainPage.class));
+            } else if (itemId == R.id.nav_cart) {
+                startActivity(new Intent(MainPage.this, MainPage.class));
+            } else if (itemId == R.id.nav_profile) {
+                startActivity(new Intent(MainPage.this, ProfilePage.class));
+            }
+            return false;
+        });
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -36,15 +48,12 @@ public class MainPage extends AppCompatActivity {
         recyclerView.setAdapter(bookAdapter);
 
         // Observe the LiveData for preloaded books
-        EditArt.getInstance().getBooksLiveData().observe(this, books -> {
-            if (books != null && !books.isEmpty()) {
-                Log.i("API", "Using preloaded books");
-                bookAdapter.setBooks(books);
-            } else {
-                Log.i("API", "Fetching books from API...");
-                fetchBooks();
-            }
-        });
+        BookRepository bookRepository = BookRepository.GetInstance();
+        if (bookRepository.getBooks().isEmpty()) {
+            fetchBooks();
+        } else {
+            bookAdapter.setBooks(bookRepository.getBooks()); // Set existing books if available
+        }
     }
 
     private void fetchBooks() {
