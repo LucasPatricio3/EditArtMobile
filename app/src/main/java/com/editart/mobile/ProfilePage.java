@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.editart.mobile.models.LoginResponse;
+import com.editart.mobile.models.UserResponse;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfilePage extends AppCompatActivity {
@@ -50,14 +50,14 @@ public class ProfilePage extends AppCompatActivity {
         TextView locality_text = findViewById(R.id.locality_text);
         TextView created_text = findViewById(R.id.created_text);
 
-        name_text.setText(LoginResponse.getLastLogin().getName());
-        email_text.setText(LoginResponse.getLastLogin().getEmail());
-        nif_text.setText(LoginResponse.getLastLogin().getNif());
-        phone_text.setText(LoginResponse.getLastLogin().getPhoneNumber());
-        address_text.setText(LoginResponse.getLastLogin().getAddress());
-        postal_text.setText(LoginResponse.getLastLogin().getPostalCode());
-        locality_text.setText(LoginResponse.getLastLogin().getLocality());
-        created_text.setText(LoginResponse.getLastLogin().getCreatedAt());
+        name_text.setText(UserResponse.getLastLogin().getName());
+        email_text.setText(UserResponse.getLastLogin().getEmail());
+        nif_text.setText(UserResponse.getLastLogin().getNif());
+        phone_text.setText(UserResponse.getLastLogin().getPhoneNumber());
+        address_text.setText(UserResponse.getLastLogin().getAddress());
+        postal_text.setText(UserResponse.getLastLogin().getPostalCode());
+        locality_text.setText(UserResponse.getLastLogin().getLocality());
+        created_text.setText(UserResponse.getLastLogin().getCreatedAt());
 
         ImageButton logOutButton = findViewById(R.id.log_out_button);
 

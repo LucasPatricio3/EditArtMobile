@@ -1,8 +1,6 @@
 package com.editart.mobile.models;
 
-import java.util.Objects;
-
-public class LoginResponse {
+public class UserResponse {
     private boolean success;
     private Data data; // A nested class for the "data" object
     private String message;
@@ -60,15 +58,15 @@ public class LoginResponse {
             return email;
         }
         public String getNif() {
-            return nif;
+            return (nif != null && !nif.isEmpty()) ? nif : "Não definido.";
         }
 
         public String getPhoneNumber() {
-            return phone_number;
+            return (phone_number != null && !phone_number.isEmpty()) ? phone_number : "Não definido.";
         }
 
         public String getAddress() {
-            return address;
+            return (address != null && !address.isEmpty()) ? address : "Não definido.";
         }
         public String getPostalCode() {
             return (postal_code != null && !postal_code.isEmpty()) ? postal_code : "Não definido.";

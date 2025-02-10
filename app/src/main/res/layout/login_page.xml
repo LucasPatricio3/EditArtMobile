@@ -92,7 +92,8 @@
             android:clickable="true"
             android:focusable="true"
             android:text="@string/registe_se"
-            android:textColor="@color/beige" />
+            android:textColor="@color/beige"
+            android:textColorLink="@color/beige" />
 
 
 

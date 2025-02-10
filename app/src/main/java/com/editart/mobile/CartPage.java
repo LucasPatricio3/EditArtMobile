@@ -15,7 +15,7 @@ import com.editart.mobile.api.APIInterface;
 import com.editart.mobile.models.Cart;
 import com.editart.mobile.models.CartItem;
 import com.editart.mobile.models.CartRequest;
-import com.editart.mobile.models.LoginResponse;
+import com.editart.mobile.models.UserResponse;
 import com.editart.mobile.retrofit.RetrofitClient;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -81,7 +81,7 @@ public class CartPage extends AppCompatActivity {
     }
 
     private void fetchCartData() {
-        Call<Cart> call = apiInterface.getCart(LoginResponse.getLastLogin().getId());
+        Call<Cart> call = apiInterface.getCart(UserResponse.getLastLogin().getId());
 
         call.enqueue(new Callback<Cart>() {
             @Override

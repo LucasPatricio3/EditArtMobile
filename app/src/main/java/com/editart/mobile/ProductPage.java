@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.editart.mobile.api.APIInterface;
 import com.editart.mobile.models.Book;
 import com.editart.mobile.models.CartRequest;
-import com.editart.mobile.models.LoginResponse;
+import com.editart.mobile.models.UserResponse;
 import com.editart.mobile.retrofit.RetrofitClient;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -76,7 +76,7 @@ public class ProductPage extends AppCompatActivity {
         cartIcon.setOnClickListener(v -> {
             int quantity = 1;  // Example quantity, you could get this dynamically if needed
             if (bookId != -1) {
-                addToCart(LoginResponse.getLastLogin().getId(), bookId, quantity);  // Call addToCart method
+                addToCart(UserResponse.getLastLogin().getId(), bookId, quantity);  // Call addToCart method
             }
         });
 

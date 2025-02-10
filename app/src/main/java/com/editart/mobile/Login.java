@@ -2,7 +2,6 @@ package com.editart.mobile;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Debug;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -22,7 +21,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.editart.mobile.api.APIInterface;
 import com.editart.mobile.models.LoginRequest;
-import com.editart.mobile.models.LoginResponse;
+import com.editart.mobile.models.UserResponse;
 import com.editart.mobile.retrofit.RetrofitClient;
 
 import retrofit2.Call;
@@ -37,6 +36,7 @@ public class Login extends AppCompatActivity {
     Button loginBtn;
     TextView forgotPassword;
     SpannableString span = new SpannableString("Não tem conta? Registe-se!");
+    SpannableString spanRecover = new SpannableString("Esqueceu-se da password?");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +67,23 @@ public class Login extends AppCompatActivity {
         span.setSpan(new ClickableSpan() {
             @Override
             public void onClick(@NonNull View widget) {
-                Log.i("Click", "Clicked On Register Reirect");
+                Log.i("Click", "Clicked On Register Redirect");
                 Intent intent = new Intent(widget.getContext(), Register.class);
                 widget.getContext().startActivity(intent);
             }
         }, 0, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         doRegisterText.setText(span);
+        doRegisterText.setMovementMethod(LinkMovementMethod.getInstance());
+
+        spanRecover.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+                Log.i("Click", "Clicked On Recover Redirect");
+                Intent intent = new Intent(widget.getContext(), Register.class);
+                widget.getContext().startActivity(intent);
+            }
+        }, 0, spanRecover.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        doRegisterText.setText(spanRecover);
         doRegisterText.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
@@ -86,11 +97,11 @@ public class Login extends AppCompatActivity {
         APIInterface apiInterface = retrofit.create(APIInterface.class);
 
         LoginRequest loginRequest = new LoginRequest(email, password);
-        apiInterface.login(loginRequest).enqueue(new Callback<LoginResponse>() {
+        apiInterface.login(loginRequest).enqueue(new Callback<UserResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    LoginResponse loginResponse = response.body();
+                    UserResponse loginResponse = response.body();
 
                     // Access the main fields
                     boolean success = loginResponse.isSuccess();
@@ -104,7 +115,7 @@ public class Login extends AppCompatActivity {
 
                         Log.d("Login Success", "Token: " + token);
                         Log.d("User Info", "Name: " + name + ", Role: " + role);
-                        LoginResponse.setLastLogin(loginResponse.getData());
+                        UserResponse.setLastLogin(loginResponse.getData());
                         Intent intent = new Intent(Login.this, MainPage.class);
                         startActivity(intent);
                     } else {
@@ -116,7 +127,7 @@ public class Login extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
+            public void onFailure(Call<UserResponse> call, Throwable t) {
                 Log.e("Login Error", t.getMessage());
             }
         });

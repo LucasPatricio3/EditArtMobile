@@ -9,17 +9,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.editart.mobile.models.Book;
-import com.editart.mobile.models.BookResponse;
-import com.editart.mobile.models.LoginResponse;
+import com.editart.mobile.models.UserResponse;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
-
-import retrofit2.Call;
 
 public class WishlistPage extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -53,7 +49,7 @@ public class WishlistPage extends AppCompatActivity {
         recyclerView.setAdapter(bookAdapter);
 
         // Observe the LiveData for preloaded books
-        WishlistRepository.getInstance().getWishlist(LoginResponse.getLastLogin().getId(), new WishlistRepository.WishlistCallback() {
+        WishlistRepository.getInstance().getWishlist(UserResponse.getLastLogin().getId(), new WishlistRepository.WishlistCallback() {
             @Override
             public void onSuccess(List<Book> wishlist) {
 

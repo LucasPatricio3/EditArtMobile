@@ -4,7 +4,8 @@ import com.editart.mobile.models.BookResponse;
 import com.editart.mobile.models.Cart;
 import com.editart.mobile.models.CartRequest;
 import com.editart.mobile.models.LoginRequest;
-import com.editart.mobile.models.LoginResponse;
+import com.editart.mobile.models.UserResponse;
+import com.editart.mobile.models.RegisterRequest;
 import com.editart.mobile.models.User;
 
 import retrofit2.Call;
@@ -21,7 +22,10 @@ public interface APIInterface {
     Call<List<User>> getUsers();
 
     @POST("/api/login")
-    Call<LoginResponse> login(@Body LoginRequest loginRequest);
+    Call<UserResponse> login(@Body LoginRequest loginRequest);
+
+    @POST("/api/register")
+    Call<UserResponse> register(@Body RegisterRequest registerRequest);
 
     @GET("/api/books")
     Call<BookResponse> getBooks();
