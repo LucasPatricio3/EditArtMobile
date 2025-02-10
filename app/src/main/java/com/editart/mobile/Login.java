@@ -53,6 +53,7 @@ public class Login extends AppCompatActivity {
         userPassword = findViewById(R.id.password_input);
         loginBtn = findViewById(R.id.login_btn);
         TextView doRegisterText = findViewById(R.id.do_register_text);
+        TextView recoverText = findViewById(R.id.forgot_password);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,12 +80,12 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(@NonNull View widget) {
                 Log.i("Click", "Clicked On Recover Redirect");
-                Intent intent = new Intent(widget.getContext(), Register.class);
+                Intent intent = new Intent(widget.getContext(), RecoveryPage.class);
                 widget.getContext().startActivity(intent);
             }
         }, 0, spanRecover.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        doRegisterText.setText(spanRecover);
-        doRegisterText.setMovementMethod(LinkMovementMethod.getInstance());
+        recoverText.setText(spanRecover);
+        recoverText.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     private void performLogin(String email, String password) {

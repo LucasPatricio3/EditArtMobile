@@ -1,9 +1,11 @@
 package com.editart.mobile.api;
 
+import com.editart.mobile.models.ApiResponse;
 import com.editart.mobile.models.BookResponse;
 import com.editart.mobile.models.Cart;
 import com.editart.mobile.models.CartRequest;
 import com.editart.mobile.models.LoginRequest;
+import com.editart.mobile.models.SecurityTokenRequest;
 import com.editart.mobile.models.UserResponse;
 import com.editart.mobile.models.RegisterRequest;
 import com.editart.mobile.models.User;
@@ -26,6 +28,9 @@ public interface APIInterface {
 
     @POST("/api/register")
     Call<UserResponse> register(@Body RegisterRequest registerRequest);
+
+    @POST("/api/check-token")
+    Call<ApiResponse> checkToken(@Body SecurityTokenRequest request);
 
     @GET("/api/books")
     Call<BookResponse> getBooks();
