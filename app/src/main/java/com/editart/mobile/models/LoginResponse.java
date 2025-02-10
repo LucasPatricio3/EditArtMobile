@@ -34,6 +34,7 @@ public class LoginResponse {
 
     // Nested class for "data"
     public static class Data {
+        private int id;
         private String token;
         private String name;
         private String email;
@@ -45,6 +46,9 @@ public class LoginResponse {
         private String created_at;
         private String role;
 
+        public int getId() {
+            return id;
+        }
         public String getToken() {
             return token;
         }

@@ -10,6 +10,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.editart.mobile.models.Book;
@@ -18,6 +19,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
+
+    public enum BookDisplayType{
+        Normal,
+        Wishlist,
+        Cart
+    }
+
+    private BookDisplayType displayType;
+
+    public BookAdapter(BookDisplayType displayType){
+        this.displayType = displayType;
+    }
+
     private List<Book> books = new ArrayList<>();
 
     public void setBooks(List<Book> books) {
@@ -28,7 +42,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     @NonNull
     @Override
     public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_item, parent, false);
+        var itemToInflate = displayType == BookDisplayType.Wishlist ? R.layout.wishlist_item : R.layout.book_item;
+        View view = LayoutInflater.from(parent.getContext()).inflate(itemToInflate, parent, false);
         return new BookViewHolder(view);
     }
 
@@ -41,7 +56,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         holder.bookRating.setRating(book.getRating());
 
         // Load image (if using Glide or Picasso)
-        // Glide.with(holder.itemView.getContext()).load(book.getCoverPicture()).into(holder.bookCover);
+        if(book.getCoverPicture() == null)
+            holder.bookCover.setImageDrawable(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.img_nao_disponivel));
+        else {}// Glide.with(holder.itemView.getContext()).load(book.getCoverPicture()).into(holder.bookCover);
 
         holder.itemView.setOnClickListener(v -> {
             Context context = v.getContext();

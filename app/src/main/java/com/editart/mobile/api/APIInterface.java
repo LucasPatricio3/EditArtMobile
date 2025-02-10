@@ -1,7 +1,8 @@
 package com.editart.mobile.api;
 
-import com.editart.mobile.models.Book;
 import com.editart.mobile.models.BookResponse;
+import com.editart.mobile.models.Cart;
+import com.editart.mobile.models.CartRequest;
 import com.editart.mobile.models.LoginRequest;
 import com.editart.mobile.models.LoginResponse;
 import com.editart.mobile.models.User;
@@ -16,8 +17,6 @@ import java.util.List;
 
 public interface APIInterface {
 
-    final String API_URL = "http://10.0.2.2:8000/";
-
     @GET("/api/users")
     Call<List<User>> getUsers();
 
@@ -26,4 +25,16 @@ public interface APIInterface {
 
     @GET("/api/books")
     Call<BookResponse> getBooks();
+
+    @GET("/api/wishlist/{user_id}")
+    Call<BookResponse> getWishlist(@Path("user_id") int userId);
+
+    @GET("/api/cart/{user_id}")
+    Call<Cart> getCart(@Path("user_id") int userId);
+
+    @POST("/api/cart/{user_id}/add")
+    Call<Void> addToCart(@Path("user_id") int userId, @Body CartRequest cartRequest);
+
+    @POST("/api/cart/{user_id}/remove")
+    Call<Void> removeFromCart(@Path("user_id") int userId, @Body CartRequest cartRequest);
 }

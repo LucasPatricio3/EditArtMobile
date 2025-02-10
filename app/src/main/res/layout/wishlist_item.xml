@@ -1,19 +1,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="8dp"
-    android:background="@drawable/book_display">
+    android:background="@drawable/book_display"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="8dp">
 
     <ImageView
         android:id="@+id/book_cover"
-        android:layout_width="80dp"
-        android:layout_height="120dp"
+        android:layout_width="129dp"
+        android:layout_height="160dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/editartlogo" />
+        android:src="@drawable/editartlogo"
+        app:srcCompat="@drawable/img_not_available"
+        tools:srcCompat="@drawable/img_not_available" />
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
@@ -24,24 +29,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Book Title"
+            android:textColor="#000000"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/book_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Book Author"
-            android:textSize="14sp"
             android:textColor="@color/beige"
+            android:textSize="14sp"
             android:textStyle="italic" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <RatingBar
                 android:id="@+id/book_rating"
@@ -58,33 +63,12 @@
                 android:id="@+id/book_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="€19,99"
-                android:textSize="16sp"
-                android:textStyle="bold"
                 android:textColor="#000000"
-                android:layout_marginStart="8dp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="8dp">
-
-        <TextView
-            android:id="@+id/cart_quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/book_display"
-            android:backgroundTint="@color/black"
-            android:padding="4dp"
-            android:text="10"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:visibility="gone" /> <!-- This line ensures visibility is set to gone initially -->
     </LinearLayout>
 
 </LinearLayout>

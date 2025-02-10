@@ -76,8 +76,9 @@
                         android:id="@+id/book_cover"
                         android:layout_width="150dp"
                         android:layout_height="220dp"
+                        android:contentDescription="Book Cover"
                         android:src="@drawable/book_display"
-                        android:contentDescription="Book Cover" />
+                        tools:srcCompat="@drawable/img_not_available" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -141,9 +142,9 @@
                                 android:id="@+id/favorite_icon"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
-                                app:tint="@color/dark_grey"
+                                android:contentDescription="Favorite"
                                 android:src="@drawable/heart_solid"
-                                android:contentDescription="Favorite" />
+                                app:tint="@color/dark_grey" />
 
                             <ImageView
                                 android:id="@+id/cart_icon"

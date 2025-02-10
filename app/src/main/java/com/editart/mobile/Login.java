@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity {
             return;
         }
 
-        Retrofit retrofit = RetrofitClient.getClient(APIInterface.API_URL);
+        Retrofit retrofit = RetrofitClient.getClient();
         APIInterface apiInterface = retrofit.create(APIInterface.class);
 
         LoginRequest loginRequest = new LoginRequest(email, password);

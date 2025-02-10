@@ -18,7 +18,7 @@ public class BookRepository {
     private List<Book> bookList = new ArrayList<>(); // Local cache
 
     public BookRepository() {
-        apiInterface = RetrofitClient.getClient(APIInterface.API_URL).create(APIInterface.class);
+        apiInterface = RetrofitClient.getClient().create(APIInterface.class);
     }
 
     public static BookRepository GetInstance() {

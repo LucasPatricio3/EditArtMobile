@@ -2,6 +2,8 @@ package com.editart.mobile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -32,9 +34,9 @@ public class ProfilePage extends AppCompatActivity {
             if (itemId == R.id.nav_products) {
                 startActivity(new Intent(ProfilePage.this, MainPage.class));
             } else if (itemId == R.id.nav_wishlist) {
-                startActivity(new Intent(ProfilePage.this, MainPage.class));
+                startActivity(new Intent(ProfilePage.this, WishlistPage.class));
             } else if (itemId == R.id.nav_cart) {
-                startActivity(new Intent(ProfilePage.this, MainPage.class));
+                startActivity(new Intent(ProfilePage.this, CartPage.class));
             }
             return false;
         });
@@ -56,5 +58,25 @@ public class ProfilePage extends AppCompatActivity {
         postal_text.setText(LoginResponse.getLastLogin().getPostalCode());
         locality_text.setText(LoginResponse.getLastLogin().getLocality());
         created_text.setText(LoginResponse.getLastLogin().getCreatedAt());
+
+        ImageButton logOutButton = findViewById(R.id.log_out_button);
+
+        // Set an OnClickListener to handle the click event
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to navigate to the LoginPage
+                Intent intent = new Intent(ProfilePage.this, Login.class);
+
+                // Optional: You can clear the activity stack to prevent returning to the previous page
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                // Start the LoginPage activity
+                startActivity(intent);
+
+                // Optional: Finish the current activity to remove it from the stack
+                finish();
+            }
+        });
     }
 }
