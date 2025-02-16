@@ -1,10 +1,13 @@
 package com.editart.mobile;
 
+import static android.view.View.VISIBLE;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -96,6 +99,8 @@ public class CartPage extends AppCompatActivity {
                         cartAdapter.setCartItems(cartItems);
                     } else {
                         Log.d("API", "Cart is empty.");
+                        TextView empty = findViewById(R.id.empty_text);
+                        empty.setVisibility(VISIBLE);
                     }
                 } else {
                     Log.e("API", "Failed to fetch cart data, response code: " + response.code());

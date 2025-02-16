@@ -59,15 +59,16 @@
             android:id="@+id/password_input"/>
 
         <TextView
+            android:id="@+id/forgot_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"
             android:gravity="end"
             android:text="@string/esqueceu_se_da_password"
             android:textColor="@color/beige"
-            android:clickable="true"
-            android:focusable="true"
-            android:id="@+id/forgot_password"/>
+            android:textColorLink="@color/beige" />
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"

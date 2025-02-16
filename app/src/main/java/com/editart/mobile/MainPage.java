@@ -52,11 +52,7 @@ public class MainPage extends AppCompatActivity {
 
         // Observe the LiveData for preloaded books
         BookRepository bookRepository = BookRepository.GetInstance();
-        if (bookRepository.getBooks().isEmpty()) {
-            fetchBooks();
-        } else {
-            bookAdapter.setBooks(bookRepository.getBooks()); // Set existing books if available
-        }
+        fetchBooks();
 
         ImageButton logOutButton = findViewById(R.id.log_out_button);
 
